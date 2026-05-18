@@ -1,0 +1,356 @@
+/* --- 1. CSS VARIABLES (DARK & NIGHT READY) --- */
+:root {
+  --g-blur: 20px;
+  --g-border: rgba(255, 255, 255, 0.125);
+  --g-bg: rgba(20, 20, 20, 0.7);
+  --g-text: #ffffff;
+  --g-muted: rgba(255, 255, 255, 0.5);
+  --g-accent: #8b5cf6; /* Binafsharang */
+  --g-accent-rgb: 139, 92, 246;
+  --g-success: #10b981;
+  --g-error: #ef4444;
+  --g-transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Night Mode Override */
+body.night-mode .glass-card {
+  --g-bg: rgba(0, 0, 0, 0.9);
+  --g-border: rgba(255, 255, 255, 0.05);
+  --g-accent: #6366f1;
+}
+
+/* --- 2. OVERLAY --- */
+.glass-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: overlayFade 0.5s ease;
+}
+
+/* --- 3. GLASS CARD --- */
+.glass-card {
+  width: 90%;
+  max-width: 480px;
+  background: var(--g-bg);
+  border: 1px solid var(--g-border);
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  animation: cardSlide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.glass-card-inner {
+  padding: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Dekorativ chiroqlar (Background Glow) */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(var(--g-accent-rgb), 0.15) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* --- 4. HEADER & ICON --- */
+.glass-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.glass-icon-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-icon {
+  font-size: 24px;
+  color: var(--g-accent);
+  z-index: 2;
+}
+
+.glass-icon-pulse {
+  position: absolute;
+  inset: 0;
+  background: var(--g-accent);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: pulseRotate 4s linear infinite;
+}
+
+.glass-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--g-text);
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.glass-header p {
+  color: var(--g-muted);
+  font-size: 15px;
+}
+
+/* --- 5. INPUTS & SELECT --- */
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.glass-input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.glass-input-group input,
+.glass-input-group select {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--g-border);
+  border-radius: 16px;
+  color: var(--g-text);
+  font-size: 16px;
+  transition: var(--g-transition);
+  outline: none;
+}
+
+.glass-input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-input-group input:focus,
+.glass-input-group select:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--g-accent);
+  box-shadow: 0 0 20px rgba(var(--g-accent-rgb), 0.2);
+  transform: translateY(-2px);
+}
+
+/* Custom Select Design */
+.custom-select-container {
+  position: relative;
+}
+
+.custom-select-container select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.custom-select-container::after {
+  content: '↓';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--g-muted);
+  pointer-events: none;
+}
+
+/* --- 6. BUTTONS & HOVERS --- */
+.glass-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.glass-btn {
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--g-transition);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-btn-submit {
+  background: var(--g-accent);
+  color: white;
+  box-shadow: 0 10px 30px rgba(var(--g-accent-rgb), 0.3);
+}
+
+.glass-btn-submit:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(var(--g-accent-rgb), 0.5);
+}
+
+.glass-btn-cancel {
+  background: transparent;
+  color: var(--g-text);
+  border: 1px solid var(--g-border);
+}
+
+.glass-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--g-muted);
+}
+
+/* --- 7. CLOSE BUTTON --- */
+.glass-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: var(--g-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--g-transition);
+}
+
+.glass-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.glass-close:hover {
+  background: var(--g-error);
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* --- 8. ANIMATIONS --- */
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cardSlide {
+  from { opacity: 0; transform: translateY(60px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulseRotate {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.5); opacity: 0.05; }
+  100% { transform: scale(1); opacity: 0.2; }
+}
+
+/* --- 9. RESPONSIVE --- */
+@media (max-width: 480px) {
+  .glass-card {
+    height: 100vh;
+    width: 100vw;
+    max-width: none;
+    border-radius: 0;
+  }
+  .glass-card-inner {
+    padding: 60px 24px;
+  }
+  .glass-actions {
+    grid-template-columns: 1fr;
+  }
+  .glass-btn-cancel {
+    order: 2;
+  }
+}
+
+/* --- 10. EXTRA: SMOOTH SCROLL & SELECTION --- */
+::selection {
+  background: var(--g-accent);
+  color: white;
+}/* Select konteyneri */
+.custom-select-container {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Asosiy select maydoni */
+.custom-select-container select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05); /* Shaffof fon */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  appearance: none; /* Standart brauzer strelkasini yo'qotish */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(5px);
+}
+
+/* Select-ga fokus bo'lgandagi holat */
+.custom-select-container select:focus {
+  border-color: #7c4dff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(124, 77, 255, 0.3);
+}
+
+/* Option-lar uchun (Brauzer ruxsat bergan darajada) */
+.custom-select-container select option {
+  background-color: #1a1a2e; /* To'q rangli fon, glass-cardga mos */
+  color: white;
+  padding: 10px;
+}
+
+/* Maxsus strelka qo'shish (Pseudo-element) */
+.custom-select-container::after {
+  content: '▼';
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Strelka bosilganda select ochilishi uchun */
+  transition: 0.3s ease;
+}
+
+.custom-select-container:focus-within::after {
+  color: #7c4dff;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Pastdagi porlash effekti */
+.select-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #7c4dff, transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.custom-select-container select:focus + .select-glow {
+  opacity: 1;
+  width: 100%;
+}

@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+.register-container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  width: 100%;
+
+  /* 🌈 oq + purple soft background */
+  background: radial-gradient(circle at top left, #f8fafc, #ede9fe);
+}
+
+/* 🧊 GLASS CARD */
+.auth-box {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(139, 92, 246, 0.2);
+
+  padding: 3rem;
+  border-radius: 2rem;
+
+  width: 100%;
+  max-width: 420px;
+
+  text-align: center;
+
+  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.15);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* 💜 PURPLE LIGHT EFFECT */
+.auth-box::before {
+  content: "";
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+
+  top: -90px;
+  right: -90px;
+
+  filter: blur(10px);
+}
+
+/* TITLE */
+.auth-box h2 {
+  color: #1e1b4b;
+  font-size: 1.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+/* TEXT */
+.auth-box p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+/* INPUT */
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  border-radius: 0.9rem;
+
+  color: #1e1b4b;
+  font-size: 1rem;
+
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+/* INPUT FOCUS */
+.auth-box input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+/* REGISTER BUTTON */
+.register-btn {
+  width: 100%;
+  padding: 0.9rem;
+
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+
+  border: none;
+  border-radius: 0.9rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  margin-top: 1rem;
+
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.25);
+}
+
+/* ERROR */
+.error-msg {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+
+  border-left: 4px solid #ef4444;
+}
+
+/* SUCCESS */
+.success-msg {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+
+  border-left: 4px solid #10b981;
+}
+
+/* SWITCH LINK */
+.switch-link {
+  display: block;
+  margin-top: 1.5rem;
+
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.switch-link span {
+  color: #8b5cf6;
+  font-weight: 700;
+}
+
+.switch-link:hover span {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .auth-box {
+    padding: 2rem;
+    margin: 1rem;
+  }
+}
+
+
+/* Toast konteyneri */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Rasmdagi kabi asosiy toast dizayni */
+.toast-msg {
+  position: relative;
+  min-width: 320px;
+  padding: 16px 20px;
+  background-color: #f8f9fa; /* Och kulrang fon */
+  border: 1px solid #d1d5db;  /* Nozik chegara */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden; /* Progress barni kesib turishi uchun */
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Toast ichidagi matn va ikonka */
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #4b5563; /* Kulrang matn */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+
+/* Katta yashil dumaloq check ikonka */
+.toast-icon-success {
+  color: #00c853;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+/* Katta qizil dumaloq xatolik ikonka */
+.toast-icon-error {
+  color: #d32f2f;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+/* Yopish (X) tugmasi */
+.toast-close-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0 0 0 10px;
+}
+
+.toast-close-btn:hover {
+  color: #4b5563;
+}
+
+/* -----------------------------------------
+   TAGIDAGI YUKLANISH CHIZIG'I (PROGRESS BAR)
+----------------------------------------- */
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  /* 3.5 soniya ichida chiziq qisqarib tugaydi */
+  animation: shrinkProgress 3.5s linear forwards;
+}
+
+/* Muvaffaqiyatli bo'lganda yashil chiziq */
+.success-toast .toast-progress {
+  background-color: #00c853;
+}
+
+/* Xatolik bo'lganda qizil chiziq */
+.error-toast .toast-progress {
+  background-color: #ef4444;
+}
+
+/* -----------------------------------------
+   ANIMATSIYALAR
+----------------------------------------- */
+/* O'ng tomondan silliq kirib kelish */
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Progress bar chizig'ini kamaytirish */
+@keyframes shrinkProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

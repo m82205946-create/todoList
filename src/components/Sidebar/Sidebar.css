@@ -1,0 +1,128 @@
+/* Sidebar.css */
+
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+
+  background: #ffffff;
+  border-right: 1px solid #ececec;
+
+  padding: 24px 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.3s ease;
+}
+
+/* DARK MODE */
+.app.dark .sidebar {
+  background: #151821;
+  border-color: #262c39;
+}
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 40px;
+}
+
+.logo-box {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6366f1
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* DARK */
+.app.dark .logo h2 {
+  color: white;
+}
+
+/* NAVIGATION */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-link {
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 16px;
+
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  color: #64748b;
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+/* HOVER */
+.nav-link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* ACTIVE */
+.nav-link.active {
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6366f1
+  );
+
+  color: white;
+}
+
+/* DARK MODE LINKS */
+.app.dark .nav-link {
+  color: #9ca3af;
+}
+
+.app.dark .nav-link:hover {
+  background: #1f2430;
+  color: white;
+}
+
+.app.dark .nav-link.active {
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6366f1
+  );
+
+  color: white;
+}
